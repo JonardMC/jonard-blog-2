@@ -11,10 +11,6 @@ import cors from 'cors';
 
 dotenv.config();
 
-app.use(cors({
-  origin: '*'
-}));
-
 mongoose
   .connect(process.env.MONGO)
   .then(() => {
@@ -27,6 +23,12 @@ mongoose
 const __dirname = path.resolve();
 
 const app = express();
+
+app.use(cors({
+  origin: '*'
+}));
+ 
+app.use(cors())
 
 app.use(express.json());
 app.use(cookieParser());
